@@ -1,0 +1,6 @@
+*.HMI binary
+*.h text eol=lf
+*.cpp text eol=lf
+*.ini text eol=lf
+*.md text eol=lf
+*.py text eol=lf

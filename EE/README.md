@@ -1,14 +1,26 @@
-# EE — Biometric access-control kiosk
+# EE — ESP32-S3 biometric kiosk
 
-This directory contains the electrical/embedded work for the joint biometric access-control project. The shared backend repository is `mjdakkak/Biometric_Access_Control_System`.
+Electrical/embedded work for the joint **Biometric Access Control System**. The partner's backend/dashboard remain in `mjdakkak/Biometric_Access_Control_System`; this EE directory is intentionally self-contained and can be copied into that repository without moving its other files.
 
-## Layout
+## Open the right folder
 
-- `firmware/`: PlatformIO project for the Freenove ESP32-S3-WROOM camera board.
-- `nextion/`: editable NX3224F028_011 display project and interface notes.
-- `hardware/`: pin allocation and prototype power/wiring notes.
-- `docs/`: setup, backend interface, test status, and outstanding integration work.
+Open **`EE/firmware/`** in VS Code/PlatformIO. Its `platformio.ini` and `src/` must remain together. Copy `src/secrets.h.example` to `src/secrets.h` locally, enter your private Wi-Fi/device key, then build/upload. Do not commit the populated file or firmware binaries.
 
-Open **`EE/firmware`** as the PlatformIO project, not the repository root. Create a private `firmware/src/secrets.h` from the example; never commit credentials or firmware binaries containing them.
+## Contents
 
-The prototype is a **single-kiosk** system. Backend approval is not physical door-open confirmation. Fingerprint recovery integration and real hardware verification remain pending; lock output stays disabled until the physical circuit is verified.
+| Directory | Purpose |
+|---|---|
+| `firmware/` | Current uploaded C++ baseline plus readable denial messages |
+| `nextion/` | Editable screen project in the downloadable handoff; model/font/event notes |
+| `hardware/` | Pin allocation and qualified prototype wiring notes |
+| `docs/` | Setup, API mapping, test status, recovery proposal, and changelog |
+
+## Scope and status
+
+Single kiosk; backend-owned authentication/enrollment sequence. No remote-unlock channel or low-power wake-up in the agreed MVP. Authentication approval is not proof that the physical door opened.
+
+The user reported a successful ESP32 build, Wi-Fi/clock readiness, Nextion communication, and real HTTPS routing. The latest camera orientation correction and this error-display update still require confirmation on the device. Fingerprint recovery HTTP/maintenance orchestration, thermal investigation, protected lock verification, and full enrollment remain open.
+
+The source preserves the uploaded hardware settings: RFID/fingerprint/camera enabled, lock disabled, recovery apply disabled. Disable a peripheral that is not physically ready. Camera preview is a temporary private-LAN diagnostic; disable it after diagnosis. These settings are not a production safety certification.
+
+Read `docs/SETUP.md`, `docs/TEST_STATUS.md`, and `hardware/PINOUT_AND_POWER.md` before powering peripherals.

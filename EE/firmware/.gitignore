@@ -1,0 +1,16 @@
+# Local credentials. Keep only the example in version control.
+/src/secrets.h
+/src/secrets.local.h
+.env
+.env.*
+!.env.example
+# Generated firmware may embed credentials.
+.pio/
+.vscode/
+*.bin
+*.elf
+*.map
+*.log
+# Local captured biometric data must not be committed.
+captures/
+snapshots/
