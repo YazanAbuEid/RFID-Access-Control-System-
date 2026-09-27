@@ -1,0 +1,14 @@
+# Inherited by all EE subdirectories.
+**/secrets.h
+**/secrets.local.h
+**/.pio/
+**/.vscode/
+*.bin
+*.elf
+*.map
+*.log
+# Generated Nextion output: create locally from the HMI.
+*.tft
+*.TFT
+.DS_Store
+Thumbs.db
